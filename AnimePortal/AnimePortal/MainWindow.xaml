@@ -1,0 +1,24 @@
+﻿<Window x:Class="AnimePortal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnimePortal"
+        mc:Ignorable="d"
+        Title="Информационный портал аниме" Height="260" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.3*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel VerticalAlignment="Bottom">
+            <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">Информационный портал аниме</Label>
+            <Label HorizontalAlignment="Center" FontSize="16">Выберите один из вариантов входа:</Label>
+        </StackPanel>
+        <Button Name="buttonGuest" Grid.Row="1" VerticalAlignment="Bottom" FontSize="18" Width="300" Padding="5" Margin="0 10" Background="LightBlue" Click="buttonGuest_Click">Войти как гость</Button>
+        <Button Name="buttonAdmin" Grid.Row="2" VerticalAlignment="Top" FontSize="18" Width="300" Padding="5" Margin="0 10" Background="LightBlue" Click="buttonAdmin_Click">Войти как администратор</Button>
+    
+    </Grid>
+</Window>
