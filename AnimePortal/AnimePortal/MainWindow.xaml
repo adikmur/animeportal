@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimePortal"
         mc:Ignorable="d"
-        Title="Информационный портал аниме" Height="260" Width="450">
+        WindowStartupLocation="CenterScreen"
+        Title="Информационный портал аниме" Height="260" MinHeight="260" Width="450" MinWidth="450">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.3*"/>

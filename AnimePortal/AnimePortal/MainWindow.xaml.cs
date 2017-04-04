@@ -27,12 +27,14 @@ namespace AnimePortal
 
         private void buttonGuest_Click(object sender, RoutedEventArgs e)
         {
-
+            GuestWindow guestWindow = new GuestWindow();
+            guestWindow.ShowDialog();
         }
 
         private void buttonAdmin_Click(object sender, RoutedEventArgs e)
         {
-
+            LoginWindow loginWindow = new LoginWindow { Owner = this };
+            loginWindow.ShowDialog();
         }
     }
 }

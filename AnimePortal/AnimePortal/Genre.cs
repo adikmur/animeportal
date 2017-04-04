@@ -1,8 +1,7 @@
 ﻿namespace AnimePortal
 {
-    class Episode
+    class Genre
     {
         public string Name { get; set; }
-        public string Description { get; set; }
     }
 }
