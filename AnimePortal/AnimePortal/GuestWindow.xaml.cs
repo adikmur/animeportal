@@ -19,33 +19,24 @@ namespace AnimePortal
     /// </summary>
     public partial class GuestWindow : Window
     {
-        public GuestWindow()
+        SerialMethods _serials;
+
+        public GuestWindow(SerialMethods serials)
         {
             InitializeComponent();
-            
-            // Тестовые данные (потом будут удалены).
-            Serial[] serials =
-            {
-                new Serial { Name = "Дневник дьявола", Genres = new List<Genre> { new Genre { Name = "ужастик" } } },
-                new Serial { Name = "Наруто", Genres = new List<Genre> { new Genre { Name = "приключения" }, new Genre { Name = "романтика" } } },
-                new Serial { Name = "Что-то левое", Genres = new List<Genre> { new Genre { Name = "комедия" } } },
-                new Serial { Name = "Какие-то заметки", Genres = new List<Genre> { new Genre { Name = "романтика" } } }
-            };
+            _serials = serials;
 
-            foreach (var serial in serials)
-            {
-                searchList.Items.Add(serial);
-                topList.Items.Add(serial);
-            }
+            searchList.ItemsSource = _serials.AllSerials;
+            topList.ItemsSource = _serials.AllSerials;
         }
         
-        public void RemoveText(object sender, EventArgs e)
+        private void RemoveText(object sender, EventArgs e)
         {
             txtSearch.Foreground = Brushes.Black;
             txtSearch.Text = "";
         }
 
-        public void AddText(object sender, EventArgs e)
+        private void AddText(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtSearch.Text))
             {

@@ -13,15 +13,15 @@
                     <DockPanel>
                         <TextBox DockPanel.Dock="Top" Name="txtSearch" GotFocus="RemoveText" LostFocus="AddText" FontSize="15" HorizontalContentAlignment="Center" Padding="2" Foreground="Gray">Введите название/жанр...</TextBox>
                         <ListView Name="searchList" DockPanel.Dock="Bottom">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock FontSize="16" Foreground="Purple" Text="{Binding Name}"></TextBlock>
-                                        <TextBlock FontSize="13" Foreground="DarkRed" Text="{Binding AllGenres}"></TextBlock>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock FontSize="16" Foreground="Purple" Text="{Binding Name}"></TextBlock>
+                                    <TextBlock FontSize="13" Foreground="DarkRed" Text="{Binding AllGenres}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </DockPanel>
             </TabItem>
             <TabItem Header="Топ 100" Width="100">

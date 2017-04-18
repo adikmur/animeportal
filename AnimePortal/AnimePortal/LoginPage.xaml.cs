@@ -10,18 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AnimePortal
 {
     /// <summary>
-    /// Логика взаимодействия для LoginWindow.xaml
+    /// Логика взаимодействия для LoginPage.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginPage : Page
     {
-        public LoginWindow()
+        SerialMethods _serials;
+
+        public LoginPage(SerialMethods serials)
         {
             InitializeComponent();
+            _serials = serials;
         }
 
         private void textChanged(object sender, RoutedEventArgs e)
@@ -38,14 +42,12 @@ namespace AnimePortal
 
             // Person person = GetPerson(login, password);
             // if (person != null)
-            AdminWindow adminWindow = new AdminWindow();
-            Close();
-            adminWindow.ShowDialog();
+            NavigationService.Navigate(new AdminPage(_serials));
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Window.GetWindow(this).Close();
         }
     }
 }

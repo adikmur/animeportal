@@ -19,25 +19,11 @@ namespace AnimePortal
     /// </summary>
     public partial class AdminWindow : Window
     {
-        public AdminWindow()
+        public AdminWindow(SerialMethods serials)
         {
             InitializeComponent();
-        }
 
-        private void serialList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // Если не выделено - false, кнопка неактивная
-            btnDeleteSerial.IsEnabled = serialList.SelectedIndex != -1;
-        }
-
-        private void episodeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            btnDeleteEpisode.IsEnabled = episodeList.SelectedIndex != -1;
-        }
-
-        private void btnLogOut_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
+            adminContent.Content = new LoginPage(serials);
         }
     }
 }
