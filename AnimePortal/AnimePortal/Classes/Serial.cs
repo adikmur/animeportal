@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AnimePortal
@@ -7,6 +8,7 @@ namespace AnimePortal
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public double Rating { get; set; }
         public List<Episode> Episodes { get; set; } = new List<Episode>();
         public List<Genre> Genres { get; set; } = new List<Genre>();
 
@@ -21,6 +23,14 @@ namespace AnimePortal
                 foreach (var genre in Genres)
                     allGenres += genre.Name + (genre == Genres.Last() ? "" : ", ");
                 return allGenres;
+            }
+        }
+
+        public string RatingName
+        {
+            get
+            {
+                return $"{Name} (рейтинг: {Math.Round(Rating, 2)})";
             }
         }
     }

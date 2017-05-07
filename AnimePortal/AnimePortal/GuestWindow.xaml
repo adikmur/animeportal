@@ -11,7 +11,7 @@
         <TabControl>
             <TabItem Header="Поиск" Width="100">
                     <DockPanel>
-                        <TextBox DockPanel.Dock="Top" Name="txtSearch" GotFocus="RemoveText" LostFocus="AddText" FontSize="15" HorizontalContentAlignment="Center" Padding="2" Foreground="Gray">Введите название/жанр...</TextBox>
+                        <TextBox DockPanel.Dock="Top" Name="txtSearch" TextChanged="txtSearch_TextChanged" GotFocus="RemoveText" LostFocus="AddText" FontSize="15" HorizontalContentAlignment="Center" Padding="2" Foreground="Gray">Введите название/жанр...</TextBox>
                         <ListView Name="searchList" DockPanel.Dock="Bottom">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -31,7 +31,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="Images/naruto.jpg" Height="80"></Image>
                                 <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
-                                    <TextBlock FontSize="16" Foreground="Purple" Text="{Binding Name}"></TextBlock>
+                                    <TextBlock FontSize="16" Foreground="Purple" Text="{Binding RatingName}"></TextBlock>
                                     <TextBlock FontSize="13" Foreground="DarkRed" Text="{Binding AllGenres}"></TextBlock>
                                 </StackPanel>
                             </StackPanel>

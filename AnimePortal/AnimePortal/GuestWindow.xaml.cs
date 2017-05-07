@@ -21,27 +21,44 @@ namespace AnimePortal
     {
         SerialMethods _serials;
 
-        public GuestWindow(SerialMethods serials)
+        public GuestWindow()
         {
             InitializeComponent();
-            _serials = serials;
+            _serials = new SerialMethods();
 
             searchList.ItemsSource = _serials.AllSerials;
-            topList.ItemsSource = _serials.AllSerials;
+            topList.ItemsSource = _serials.GetTop100();
         }
-        
+
+        bool _entered = false;
+
         private void RemoveText(object sender, EventArgs e)
         {
             txtSearch.Foreground = Brushes.Black;
             txtSearch.Text = "";
+            _entered = true;
         }
 
         private void AddText(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtSearch.Text))
             {
+                _entered = false;
                 txtSearch.Foreground = Brushes.Gray;
                 txtSearch.Text = "Введите название/жанр...";
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_entered)
+            {
+                string search = txtSearch.Text;
+
+                if (searchList != null)
+                {
+                    searchList.ItemsSource = _serials.SearchByString(search);
+                }
             }
         }
     }

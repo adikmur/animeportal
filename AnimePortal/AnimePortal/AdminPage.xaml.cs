@@ -22,10 +22,10 @@ namespace AnimePortal
     {
         SerialMethods _serials;
 
-        public AdminPage(SerialMethods serials)
+        public AdminPage()
         {
             InitializeComponent();
-            _serials = serials;
+            _serials = new SerialMethods();
 
             // Добавим элементы таким образом:
             serialList.ItemsSource = _serials.AllSerials;
@@ -39,8 +39,24 @@ namespace AnimePortal
             
             if (serialList.SelectedIndex != -1)
             {
+                // Если выбрано, то скроем изначальную информацию.
+                initialInfoLabel.Visibility = Visibility.Hidden;
+
                 Serial selected = serialList.SelectedItem as Serial;
-                episodeList.ItemsSource = selected.Episodes;
+                if (selected.Episodes.Count == 0)
+                    // Если нет эпизодов, то высветим информацию о добавлении.
+                    infoLabel.Visibility = Visibility.Visible;
+                else
+                {
+                    episodeList.ItemsSource = selected.Episodes;
+                    // Если есть эпизоды, то скроем информацию о добавлении.
+                    infoLabel.Visibility = Visibility.Hidden;
+                }
+            }
+            else
+            {
+                // Если не выбрано, то высветим информацию о выборе сериала.
+                initialInfoLabel.Visibility = Visibility.Visible;
             }
         }
 
@@ -66,6 +82,35 @@ namespace AnimePortal
                 Serial selected = serialList.SelectedItem as Serial;
                 NavigationService.Navigate(new AddEpisodePage(_serials, selected));
             }
+        }
+
+        private void btnDeleteSerial_Click(object sender, RoutedEventArgs e)
+        {
+            if (serialList.SelectedIndex != -1)
+            {
+                Serial selected = serialList.SelectedItem as Serial;
+                _serials.RemoveSerial(selected);
+                serialList.Items.Refresh();
+                // Отменим выбор эпизода.
+                episodeList.SelectedIndex = -1;
+            }
+        }
+
+        private void btnDeleteEpisode_Click(object sender, RoutedEventArgs e)
+        {
+            if (episodeList.SelectedIndex != -1 && serialList.SelectedIndex != -1)
+            {
+                Episode selected = episodeList.SelectedItem as Episode;
+                Serial episodeSerial = serialList.SelectedItem as Serial;
+                _serials.RemoveEpisode(episodeSerial, selected);
+                // Отменяем выбор сериала - высветит информацию о том, что надо заново выбрать.
+                serialList.SelectedIndex = -1;
+            }
+        }
+
+        private void btnGenres_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new GenresPage(_serials));
         }
     }
 }

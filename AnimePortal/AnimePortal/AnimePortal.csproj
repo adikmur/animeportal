@@ -67,16 +67,22 @@
     <Compile Include="AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Authorization.cs" />
     <Compile Include="Classes\Episode.cs" />
     <Compile Include="Classes\Genre.cs" />
+    <Compile Include="GenresPage.xaml.cs">
+      <DependentUpon>GenresPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GuestWindow.xaml.cs">
       <DependentUpon>GuestWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Logger.cs" />
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Serial.cs" />
     <Compile Include="SerialMethods.cs" />
+    <Compile Include="Classes\User.cs" />
     <Page Include="AddEpisodePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GenresPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

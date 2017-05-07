@@ -18,24 +18,31 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Label VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Margin="10 0">Имя сериала:</Label>
-        <TextBox Name="txtName" Grid.Column="1" VerticalAlignment="Center" FontSize="16" Margin="10"></TextBox>
+        <TextBlock Name="titleLabel" Width="300" TextWrapping="Wrap" Margin="10" TextAlignment="Center" FontSize="18" Grid.ColumnSpan="2">Добавление нового сериала</TextBlock>
 
-        <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Margin="10 0">Описание:</Label>
-        <TextBox Name="txtDescription" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" FontSize="16" Margin="10" Width="200" Height="70"></TextBox>
+        <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Margin="10 0">Имя сериала:</Label>
+        <TextBox Name="txtName" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontSize="16" Margin="10"></TextBox>
 
-        <Label Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Margin="10 0">Жанры:</Label>
-        <ComboBox Grid.Row="2" Grid.Column="1" FontSize="16" Margin="10">
+        <Label Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Margin="10 0">Описание:</Label>
+        <TextBox Name="txtDescription" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" AcceptsReturn="True" FontSize="16" Margin="10" Width="200" Height="80"></TextBox>
+
+        <Label Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Margin="10 0">Рейтинг:</Label>
+        <TextBox Name="txtRating" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" FontSize="16" Margin="10"></TextBox>
+
+        <Label Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Margin="10 0">Жанры:</Label>
+        <ComboBox Grid.Row="4" Grid.Column="1" FontSize="16" Margin="10">
             <ComboBoxItem>1 жанр</ComboBoxItem>
             <ComboBoxItem>2 жанр</ComboBoxItem>
             <ComboBoxItem>3 жанр</ComboBoxItem>
         </ComboBox>
 
-        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" Orientation="Horizontal" Margin="10">
-            <Button Name="btnAdd" Grid.Row="2" Grid.ColumnSpan="2" Background="LightBlue" VerticalAlignment="Center" FontSize="17" Width="100" Padding="2" Margin="5 0" Click="btnAdd_Click">Добавить</Button>
-            <Button Name="btnCancel" Grid.Row="2" Grid.ColumnSpan="2" Background="LightCoral" VerticalAlignment="Center" FontSize="17" Width="100" Padding="2" Margin="5 0" Click="btnCancel_Click">Отменить</Button>
+        <StackPanel Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" Orientation="Horizontal" Margin="10">
+            <Button Name="btnAdd" Background="LightBlue" VerticalAlignment="Center" FontSize="17" Width="100" Padding="2" Margin="5 0" Click="btnAdd_Click">Добавить</Button>
+            <Button Name="btnCancel" Background="LightCoral" VerticalAlignment="Center" FontSize="17" Width="100" Padding="2" Margin="5 0" Click="btnCancel_Click">Отменить</Button>
         </StackPanel>
     </Grid>
 </Page>

@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<ArrayOfSerial xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Serial>
+    <Name>Наруто</Name>
+    <Description>Сериал про мальчика героя</Description>
+    <Rating>0</Rating>
+    <Episodes>
+      <Episode>
+        <Name>Наруто родился</Name>
+        <Description>Рождение героя</Description>
+        <SeasonNumber>1</SeasonNumber>
+      </Episode>
+      <Episode>
+        <Name>Наруто ходит в школу</Name>
+        <Description>Школа героя</Description>
+        <SeasonNumber>2</SeasonNumber>
+      </Episode>
+      <Episode>
+        <Name>Смерть наруто</Name>
+        <Description>Смерть героя</Description>
+        <SeasonNumber>3</SeasonNumber>
+      </Episode>
+    </Episodes>
+    <Genres>
+      <Genre>
+        <Name>комедия</Name>
+      </Genre>
+    </Genres>
+  </Serial>
+  <Serial>
+    <Name>Дневник дьявола</Name>
+    <Rating>0</Rating>
+    <Episodes />
+    <Genres>
+      <Genre>
+        <Name>ужастик</Name>
+      </Genre>
+    </Genres>
+  </Serial>
+  <Serial>
+    <Name>Аниме мульт</Name>
+    <Rating>0</Rating>
+    <Episodes>
+      <Episode>
+        <Name>Вот такая вот серия</Name>
+        <Description>Описание обычное</Description>
+        <SeasonNumber>1</SeasonNumber>
+      </Episode>
+    </Episodes>
+    <Genres>
+      <Genre>
+        <Name>приключения</Name>
+      </Genre>
+      <Genre>
+        <Name>романтика</Name>
+      </Genre>
+    </Genres>
+  </Serial>
+  <Serial>
+    <Name>Что-то странное</Name>
+    <Rating>0</Rating>
+    <Episodes>
+      <Episode>
+        <Name>Странное 1</Name>
+        <Description>Описание странного</Description>
+        <SeasonNumber>1</SeasonNumber>
+      </Episode>
+    </Episodes>
+    <Genres>
+      <Genre>
+        <Name>комедия</Name>
+      </Genre>
+    </Genres>
+  </Serial>
+  <Serial>
+    <Name>Какие-то заметки</Name>
+    <Rating>0</Rating>
+    <Episodes>
+      <Episode>
+        <Name>Серия 1</Name>
+        <Description>Описание</Description>
+        <SeasonNumber>1</SeasonNumber>
+      </Episode>
+    </Episodes>
+    <Genres>
+      <Genre>
+        <Name>романтика</Name>
+      </Genre>
+    </Genres>
+  </Serial>
+  <Serial>
+    <Name>Новый сериал</Name>
+    <Description>Описание нового сериала</Description>
+    <Rating>0</Rating>
+    <Episodes>
+      <Episode>
+        <Name>1 серия нового</Name>
+        <Description>Описание новой серии</Description>
+        <SeasonNumber>1</SeasonNumber>
+      </Episode>
+    </Episodes>
+    <Genres />
+  </Serial>
+  <Serial>
+    <Name>Проверка рейтинга</Name>
+    <Description>Рейтинг</Description>
+    <Rating>10</Rating>
+    <Episodes>
+      <Episode>
+        <Name>Рейтинг 1</Name>
+        <Description>Описание</Description>
+        <SeasonNumber>1</SeasonNumber>
+      </Episode>
+    </Episodes>
+    <Genres />
+  </Serial>
+</ArrayOfSerial>

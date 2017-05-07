@@ -20,8 +20,6 @@ namespace AnimePortal
     /// </summary>
     public partial class MainWindow : Window
     {
-        SerialMethods _serials = new SerialMethods();
-
         public MainWindow()
         {
             InitializeComponent();
@@ -29,13 +27,13 @@ namespace AnimePortal
 
         private void buttonGuest_Click(object sender, RoutedEventArgs e)
         {
-            GuestWindow guestWindow = new GuestWindow(_serials);
+            GuestWindow guestWindow = new GuestWindow();
             guestWindow.ShowDialog();
         }
 
         private void buttonAdmin_Click(object sender, RoutedEventArgs e)
         {
-            AdminWindow adminWindow = new AdminWindow(_serials) { Owner = this };
+            AdminWindow adminWindow = new AdminWindow() { Owner = this };
             adminWindow.ShowDialog();
         }
     }

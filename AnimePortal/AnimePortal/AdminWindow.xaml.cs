@@ -19,11 +19,11 @@ namespace AnimePortal
     /// </summary>
     public partial class AdminWindow : Window
     {
-        public AdminWindow(SerialMethods serials)
+        public AdminWindow()
         {
             InitializeComponent();
 
-            adminContent.Content = new LoginPage(serials);
+            adminContent.Content = new LoginPage();
         }
     }
 }

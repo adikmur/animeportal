@@ -8,7 +8,6 @@
       d:DesignHeight="500" d:DesignWidth="600"
       Title="Админ-панель"
       Background="White">
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -26,32 +25,29 @@
         <Label Grid.Row="1" HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="16">Все сериалы</Label>
         <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="16">Серии</Label>
 
-        <ListBox Name="serialList" Grid.Row="2" FontSize="15" Margin="5" SelectionChanged="serialList_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ListBox Name="serialList" DisplayMemberPath="Name" Grid.Row="2" BorderThickness="0" FontSize="15" Margin="20 10 10 10" SelectionChanged="serialList_SelectionChanged"/>
 
-        <ListBox Name="episodeList" Grid.Row="2" Grid.Column="1" FontSize="15" Margin="5" SelectionChanged="episodeList_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ListBox Name="episodeList" DisplayMemberPath="Name" Grid.Row="2" Grid.Column="1" BorderThickness="0" FontSize="15" Margin="10 10 20 10" SelectionChanged="episodeList_SelectionChanged"/>
+        <Label Background="White" Name="initialInfoLabel" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="16" Grid.Column="1" Grid.Row="2" Margin="10 10 20 10">
+            Выберите сериал слева
+        </Label>
+        <Label Name="infoLabel" Visibility="Hidden" VerticalContentAlignment="Center" Background="White" FontSize="16" Grid.Row="2" Grid.Column="1" Margin="10 10 20 10">
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center">
+            У выбранного сериала нет эпизодов. Нажмите кнопку "Добавить" ниже.
+            </TextBlock>
+        </Label>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="btnAddSerial" FontSize="16" VerticalAlignment="Center" Padding="2" Width="100" Background="LightBlue" Margin="5 0" Click="btnAddSerial_Click">Добавить</Button>
-            <Button Name="btnDeleteSerial" IsEnabled="False" FontSize="16" VerticalAlignment="Center" Padding="2" Width="100" Background="LightCoral" Margin="5 0">Удалить</Button>
+            <Button Name="btnDeleteSerial" IsEnabled="False" FontSize="16" VerticalAlignment="Center" Padding="2" Width="100" Background="LightCoral" Margin="5 0" Click="btnDeleteSerial_Click">Удалить</Button>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="btnAddEpisode" IsEnabled="False" FontSize="16" VerticalAlignment="Center" Padding="2" Width="100" Background="LightBlue" Margin="5 0" Click="btnAddEpisode_Click">Добавить</Button>
-            <Button Name="btnDeleteEpisode" IsEnabled="False" FontSize="16" VerticalAlignment="Center" Padding="2" Width="100" Background="LightCoral" Margin="5 0">Удалить</Button>
+            <Button Name="btnDeleteEpisode" IsEnabled="False" FontSize="16" VerticalAlignment="Center" Padding="2" Width="100" Background="LightCoral" Margin="5 0" Click="btnDeleteEpisode_Click">Удалить</Button>
         </StackPanel>
 
-        <Button Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Background="LightBlue" FontSize="16" Padding="2" Click="btnLogOut_Click">Выйти</Button>
+        <Button Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Background="LightBlue" FontSize="16" Padding="2" Click="btnGenres_Click">Жанры</Button>
+        <Button Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Width="100" Background="LightCoral" FontSize="16" Padding="2" Margin="10 0 20 0" Click="btnLogOut_Click">Выйти</Button>
     </Grid>
 </Page>

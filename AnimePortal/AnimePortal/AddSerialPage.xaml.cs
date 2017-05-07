@@ -30,14 +30,22 @@ namespace AnimePortal
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            double rating;
+            if (!double.TryParse(txtRating.Text, out rating) || rating > 10 || rating < 0)
+            {
+                MessageBox.Show("Рейтинг должен быть вещественным числом и от 0 до 10!");
+                return;
+            }
+
             Serial serial = new Serial
             {
                 Name = txtName.Text,
-                Description = txtDescription.Text
+                Description = txtDescription.Text,
+                Rating = rating
             };
 
             _serials.AddSerial(serial);
-            NavigationService.Navigate(new AdminPage(_serials));
+            NavigationService.Navigate(new AdminPage());
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

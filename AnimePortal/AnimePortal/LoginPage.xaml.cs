@@ -20,12 +20,9 @@ namespace AnimePortal
     /// </summary>
     public partial class LoginPage : Page
     {
-        SerialMethods _serials;
-
-        public LoginPage(SerialMethods serials)
+        public LoginPage()
         {
             InitializeComponent();
-            _serials = serials;
         }
 
         private void textChanged(object sender, RoutedEventArgs e)
@@ -40,9 +37,11 @@ namespace AnimePortal
         {
             string login = txtLogin.Text, password = txtPassword.Password;
 
-            // Person person = GetPerson(login, password);
-            // if (person != null)
-            NavigationService.Navigate(new AdminPage(_serials));
+            Authorization authorization = new Authorization();
+            if (authorization.CheckUser(login, password))
+                NavigationService.Navigate(new AdminPage());
+            else
+                MessageBox.Show("Неверный логин или пароль! Попробуйте снова.");
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

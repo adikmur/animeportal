@@ -42,7 +42,7 @@ namespace AnimePortal
             };
 
             _serials.AddEpisode(episode, _serialToAddEpisode);
-            NavigationService.Navigate(new AdminPage(_serials));
+            NavigationService.Navigate(new AdminPage());
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
