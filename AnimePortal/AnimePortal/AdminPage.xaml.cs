@@ -27,7 +27,6 @@ namespace AnimePortal
             InitializeComponent();
             _serials = new SerialMethods();
 
-            // Добавим элементы таким образом:
             serialList.ItemsSource = _serials.AllSerials;
         }
 
@@ -36,27 +35,28 @@ namespace AnimePortal
             // Если не выделено - false, кнопка неактивная
             btnDeleteSerial.IsEnabled = serialList.SelectedIndex != -1;
             btnAddEpisode.IsEnabled = serialList.SelectedIndex != -1;
-            
+
             if (serialList.SelectedIndex != -1)
             {
-                // Если выбрано, то скроем изначальную информацию.
+                // Если выбрано, то скроем изначальную информацию
                 initialInfoLabel.Visibility = Visibility.Hidden;
 
                 Serial selected = serialList.SelectedItem as Serial;
                 if (selected.Episodes.Count == 0)
-                    // Если нет эпизодов, то высветим информацию о добавлении.
+                    // Если нет эпизодов, то высветим информацию о добавлении
                     infoLabel.Visibility = Visibility.Visible;
                 else
                 {
                     episodeList.ItemsSource = selected.Episodes;
-                    // Если есть эпизоды, то скроем информацию о добавлении.
+                    // Если есть эпизоды, то скроем информацию о добавлении
                     infoLabel.Visibility = Visibility.Hidden;
                 }
             }
             else
             {
-                // Если не выбрано, то высветим информацию о выборе сериала.
+                // Если не выбрано, то высветим информацию о выборе сериала
                 initialInfoLabel.Visibility = Visibility.Visible;
+                infoLabel.Visibility = Visibility.Hidden;
             }
         }
 
@@ -67,7 +67,7 @@ namespace AnimePortal
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
-            Window.GetWindow(this).Close();
+            NavigationService.GoBack();
         }
 
         private void btnAddSerial_Click(object sender, RoutedEventArgs e)
@@ -91,7 +91,7 @@ namespace AnimePortal
                 Serial selected = serialList.SelectedItem as Serial;
                 _serials.RemoveSerial(selected);
                 serialList.Items.Refresh();
-                // Отменим выбор эпизода.
+                // Отменим выбор эпизода
                 episodeList.SelectedIndex = -1;
             }
         }
@@ -103,14 +103,44 @@ namespace AnimePortal
                 Episode selected = episodeList.SelectedItem as Episode;
                 Serial episodeSerial = serialList.SelectedItem as Serial;
                 _serials.RemoveEpisode(episodeSerial, selected);
-                // Отменяем выбор сериала - высветит информацию о том, что надо заново выбрать.
+                // Обновим элементы
+                episodeList.Items.Refresh();
+                // Отменяем выбор сериала - высветит информацию о том, что надо заново выбрать
                 serialList.SelectedIndex = -1;
             }
         }
 
-        private void btnGenres_Click(object sender, RoutedEventArgs e)
+        private void episodeList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.Navigate(new GenresPage(_serials));
+            if (episodeList.SelectedIndex != -1)
+            {
+                Episode selected = episodeList.SelectedItem as Episode;
+                NavigationService.Navigate(new EditEpisodePage(_serials, selected));
+            }
+        }
+
+        private void serialList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (serialList.SelectedIndex != -1)
+            {
+                Serial selected = serialList.SelectedItem as Serial;
+                NavigationService.Navigate(new EditSerialPage(_serials, selected));
+            }
+        }
+
+        // При загрузке страницы (в интернете)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Укажем, что будет выполняться, когда будет совершен переход на эту страницу или с этой страницы
+            NavigationService.LoadCompleted += NavigationService_LoadCompleted;
+        }
+
+        private void NavigationService_LoadCompleted(object sender, NavigationEventArgs e)
+        {
+            // Обновим все и отменим выбор
+            episodeList.Items.Refresh();
+            serialList.Items.Refresh();
+            serialList.SelectedIndex = -1;
         }
     }
 }

@@ -37,6 +37,7 @@ namespace AnimePortal
         {
             string login = txtLogin.Text, password = txtPassword.Password;
 
+            // Класс для авторизации
             Authorization authorization = new Authorization();
             if (authorization.CheckUser(login, password))
                 NavigationService.Navigate(new AdminPage());
@@ -46,7 +47,7 @@ namespace AnimePortal
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            Window.GetWindow(this).Close();
+            NavigationService.GoBack();
         }
     }
 }

@@ -29,7 +29,7 @@ namespace AnimePortal
             {
                 if (login == user.Login && password == user.Password)
                 {
-                    Logger.Log($"Пользователь {login} зашел в систему.");
+                    Logger.Log($"Пользователь {login} зашел в систему");
                     return true;
                 }
             }

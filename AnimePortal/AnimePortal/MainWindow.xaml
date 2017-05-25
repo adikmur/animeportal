@@ -6,20 +6,10 @@
         xmlns:local="clr-namespace:AnimePortal"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Информационный портал аниме" Height="260" MinHeight="260" Width="450" MinWidth="450">
+        Icon="Images/naruto.png"
+        Background="#fff2f2"
+        Title="Информационный портал аниме" Height="500" MinHeight="500" Width="600" MinWidth="560">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.3*"/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-
-        <StackPanel VerticalAlignment="Bottom">
-            <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">Информационный портал аниме</Label>
-            <Label HorizontalAlignment="Center" FontSize="16">Выберите один из вариантов входа:</Label>
-        </StackPanel>
-        <Button Name="buttonGuest" Grid.Row="1" VerticalAlignment="Bottom" FontSize="18" Width="300" Padding="5" Margin="0 10" Background="LightBlue" Click="buttonGuest_Click">Войти как гость</Button>
-        <Button Name="buttonAdmin" Grid.Row="2" VerticalAlignment="Top" FontSize="18" Width="300" Padding="5" Margin="0 10" Background="LightBlue" Click="buttonAdmin_Click">Войти как администратор</Button>
-    
+        <Frame Name="pageContent" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

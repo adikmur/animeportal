@@ -64,25 +64,30 @@
     <Compile Include="AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminWindow.xaml.cs">
-      <DependentUpon>AdminWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Authorization.cs" />
     <Compile Include="Classes\Episode.cs" />
-    <Compile Include="Classes\Genre.cs" />
-    <Compile Include="GenresPage.xaml.cs">
-      <DependentUpon>GenresPage.xaml</DependentUpon>
+    <Compile Include="EditEpisodePage.xaml.cs">
+      <DependentUpon>EditEpisodePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GuestWindow.xaml.cs">
-      <DependentUpon>GuestWindow.xaml</DependentUpon>
+    <Compile Include="EditSerialPage.xaml.cs">
+      <DependentUpon>EditSerialPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GuestPage.xaml.cs">
+      <DependentUpon>GuestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Logger.cs" />
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Serial.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SerialMethods.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="SerialPage.xaml.cs">
+      <DependentUpon>SerialPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddEpisodePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,19 +100,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminWindow.xaml">
+    <Page Include="EditEpisodePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GenresPage.xaml">
+    <Page Include="EditSerialPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GuestWindow.xaml">
+    <Page Include="GuestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,6 +132,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SerialPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -151,9 +164,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Images\naruto.jpg" />
+    <Resource Include="Images\top100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\naruto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

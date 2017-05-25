@@ -16,23 +16,31 @@ using System.Windows.Shapes;
 namespace AnimePortal
 {
     /// <summary>
-    /// Логика взаимодействия для AddEpisodePage.xaml
+    /// Логика взаимодействия для EditEpisodePage.xaml
     /// </summary>
-    public partial class AddEpisodePage : Page
+    public partial class EditEpisodePage : Page
     {
         SerialMethods _serials;
-        Serial _serialToAddEpisode;
+        Episode _episodeToEdit;
 
-        public AddEpisodePage(SerialMethods serials, Serial serialToAddEpisode)
+        public EditEpisodePage(SerialMethods serials, Episode episode)
         {
             InitializeComponent();
             _serials = serials;
-            _serialToAddEpisode = serialToAddEpisode;
+            _episodeToEdit = episode;
 
-            titleLabel.Text = $"Добавление серии для сериала \"{serialToAddEpisode.Name}\"";
+            titleLabel.Text += $" \"{episode.Name}\"";
+            txtName.Text = episode.Name;
+            txtDescription.Text = episode.Description;
+            txtSeason.Text = episode.SeasonNumber.ToString();
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             int seasonNumber;
             if (!int.TryParse(txtSeason.Text, out seasonNumber))
@@ -48,21 +56,7 @@ namespace AnimePortal
                 return;
             }
 
-            Episode episode = new Episode(txtName.Text, txtDescription.Text, seasonNumber);
-
-            try
-            {
-                _serials.AddEpisode(episode, _serialToAddEpisode);
-                NavigationService.GoBack();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
+            _serials.EditEpisode(_episodeToEdit, txtName.Text, txtDescription.Text, seasonNumber);
             NavigationService.GoBack();
         }
     }

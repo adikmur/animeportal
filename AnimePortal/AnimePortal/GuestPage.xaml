@@ -1,0 +1,46 @@
+﻿<Page x:Class="AnimePortal.GuestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AnimePortal"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="600"
+      Background="White"
+      Title="Гостевой режим">
+    <Grid>
+        <TabControl Margin="0 0 0 50">
+            <TabItem Header="Поиск" Width="100">
+                <DockPanel>
+                    <TextBox DockPanel.Dock="Top" Name="txtSearch" TextChanged="txtSearch_TextChanged" GotFocus="RemoveText" LostFocus="AddText" FontSize="15" HorizontalContentAlignment="Center" Padding="2" Foreground="Gray">Введите название/жанр...</TextBox>
+                    <ListView Name="searchList" DockPanel.Dock="Bottom" Background="#fff2f2" MouseDoubleClick="searchList_MouseDoubleClick">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock FontSize="16" Foreground="Purple" Text="{Binding Name}"></TextBlock>
+                                    <TextBlock FontSize="13" Foreground="Black" Text="{Binding GenresName}"></TextBlock>
+                                </StackPanel>   
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Топ 100" Width="100">
+                <ListView Name="topList" Background="#fff2f2" MouseDoubleClick="topList_MouseDoubleClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Images/top100.png" Height="80"></Image>
+                                <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                    <TextBlock FontSize="16" Foreground="Purple" Text="{Binding RatingName}"></TextBlock>
+                                    <TextBlock FontSize="13" Foreground="Black" Text="{Binding GenresName}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+        </TabControl>
+        <Button Name="btnBack" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Height="30" Width="100" FontSize="15" Background="LightCoral" Click="btnBack_Click">Назад</Button>
+    </Grid>
+</Page>

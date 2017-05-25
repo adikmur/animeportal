@@ -6,8 +6,7 @@
       xmlns:local="clr-namespace:AnimePortal"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="600"
-      Title="Вход в систему"
-      Background="White">
+      Title="Вход в систему">
 
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.RowDefinitions>

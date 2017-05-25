@@ -10,20 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AnimePortal
 {
     /// <summary>
-    /// Логика взаимодействия для AdminWindow.xaml
+    /// Логика взаимодействия для MainPage.xaml
     /// </summary>
-    public partial class AdminWindow : Window
+    public partial class MainPage : Page
     {
-        public AdminWindow()
+        public MainPage()
         {
             InitializeComponent();
+        }
+        private void buttonGuest_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new GuestPage());
+        }
 
-            adminContent.Content = new LoginPage();
+        private void buttonAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new LoginPage());
         }
     }
 }

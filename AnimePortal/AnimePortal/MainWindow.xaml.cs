@@ -23,18 +23,7 @@ namespace AnimePortal
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void buttonGuest_Click(object sender, RoutedEventArgs e)
-        {
-            GuestWindow guestWindow = new GuestWindow();
-            guestWindow.ShowDialog();
-        }
-
-        private void buttonAdmin_Click(object sender, RoutedEventArgs e)
-        {
-            AdminWindow adminWindow = new AdminWindow() { Owner = this };
-            adminWindow.ShowDialog();
+            pageContent.Content = new MainPage();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<Page x:Class="AnimePortal.AddSerialPage"
+﻿<Page x:Class="AnimePortal.EditSerialPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:AnimePortal"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="600"
-      Title="Добавление сериала">
+      Title="Редактирование сериала">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -21,7 +21,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Name="titleLabel" Width="300" TextWrapping="Wrap" Margin="10" TextAlignment="Center" FontWeight="Medium" FontSize="18" Grid.ColumnSpan="2">Добавление нового сериала</TextBlock>
+        <TextBlock Name="titleLabel" Width="300" TextWrapping="Wrap" Margin="10" TextAlignment="Center" FontWeight="Medium" FontSize="18" Grid.ColumnSpan="2">Редактирование сериала</TextBlock>
 
         <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Margin="10 0">Имя сериала:</Label>
         <TextBox Name="txtName" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontSize="16" Margin="10" Width="250"></TextBox>
@@ -36,8 +36,8 @@
         <TextBox Name="txtGenres" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" FontSize="16" Margin="10" Width="250"></TextBox>
 
         <StackPanel Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" Orientation="Horizontal" Margin="10">
-            <Button Name="btnAdd" Background="LightBlue" VerticalAlignment="Center" FontSize="17" Width="100" Padding="2" Margin="5 0" Click="btnAdd_Click">Добавить</Button>
-            <Button Name="btnCancel" Background="LightCoral" VerticalAlignment="Center" FontSize="17" Width="100" Padding="2" Margin="5 0" Click="btnCancel_Click">Отменить</Button>
+            <Button Name="btnEdit" Background="LightBlue" VerticalAlignment="Center" FontSize="17" Width="130" Padding="2" Margin="5 0" Click="btnEdit_Click">Редактировать</Button>
+            <Button Name="btnCancel" Background="LightCoral" VerticalAlignment="Center" FontSize="17" Width="130" Padding="2" Margin="5 0" Click="btnCancel_Click">Отменить</Button>
         </StackPanel>
     </Grid>
 </Page>

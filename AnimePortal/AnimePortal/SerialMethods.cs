@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-// Для потоков и файлов.
+// Для потоков и файлов
 using System.IO;
 using System.Linq;
-// Для (де)сериализации.
+// Для (де)сериализации
 using System.Xml.Serialization;
 
 namespace AnimePortal
@@ -13,7 +13,6 @@ namespace AnimePortal
         private const string _file = "../../Data/serials.xml";
 
         private List<Serial> _allSerials = new List<Serial>();
-        private List<Genre> _allGenres = new List<Genre>();
 
         public List<Serial> AllSerials
         {
@@ -23,19 +22,12 @@ namespace AnimePortal
             }
         }
 
-        public List<Genre> AllGenres
-        {
-            get
-            {
-                return _allGenres;
-            }
-        }
-
         public SerialMethods()
         {
             Deserialize();
         }
 
+        // Добавление сериала
         public void AddSerial(Serial serial)
         {
             foreach (Serial s in _allSerials)
@@ -49,6 +41,7 @@ namespace AnimePortal
             Serialize();
         }
 
+        // Добавление эпизода
         public void AddEpisode(Episode episode, Serial serial)
         {
             foreach (Episode e in serial.Episodes)
@@ -62,44 +55,70 @@ namespace AnimePortal
             Serialize();
         }
 
-        public void AddGenre(Genre genre)
+        // Редактирование сериала
+        public void EditSerial(Serial serial, string name, string description, string genres, double rating)
         {
-            _allGenres.Add(genre);
+            string oldName = serial.Name;
+
+            serial.Name = name;
+            serial.Description = description;
+            serial.Genres = genres;
+            serial.Rating = rating;
+
+            if (oldName == name)
+                Logger.Log($"Редактирован сериал \"{name}\"");
+            else
+                Logger.Log($"Редактирован сериал \"{oldName}\". Новое имя: \"{name}\"");
+            Serialize();
         }
 
-        public void RemoveGenre(Genre genre)
+        // Редактирование эпизода
+        public void EditEpisode(Episode episode, string name, string description, int seasonNumber)
         {
-            foreach (Serial serial in _allSerials)
-            {
-                serial.Genres.Remove(genre);
-            }
+            string oldName = episode.Name;
 
-            _allGenres.Remove(genre);
+            episode.Name = name;
+            episode.Description = description;
+            episode.SeasonNumber = seasonNumber;
+
+            if (oldName == name)
+                Logger.Log($"Редактирован эпизод \"{name}\"");
+            else
+                Logger.Log($"Редактирован эпизод \"{oldName}\". Новое имя: \"{name}\"");
+            Serialize();
         }
 
+        // Удаление сериала
         public void RemoveSerial(Serial serial)
         {
             _allSerials.Remove(serial);
-            Logger.Log($"Удален сериал: \"{serial.Name}\"");
+            Logger.Log($"Удален сериал \"{serial.Name}\"");
             Serialize();
         }
 
+        // Удаление эпизода
         public void RemoveEpisode(Serial serial, Episode episode)
         {
             serial.Episodes.Remove(episode);
-            Logger.Log($"Удален эпизод: \"{episode.Name}\"");
+            Logger.Log($"Удален эпизод \"{episode.Name}\" из сериала \"{serial.Name}\"");
             Serialize();
         }
 
+        // ТОП-100
         public List<Serial> GetTop100()
         {
-            List<Serial> result = AllSerials;
-            // Тут сортировка по рейтингу.
-            return result;
+            // Сортировка по рейтингу (по убыванию)
+            List<Serial> sorted = AllSerials.OrderByDescending(s => s.Rating).ToList();
+            // Если больше 100, то вернем элементы от 0 (100 штук)
+            if (sorted.Count >= 100)
+                return sorted.GetRange(0, 100);
+            return sorted;
         }
 
+        // Поиск по строке
         public List<Serial> SearchByString(string search)
         {
+            // Если пустая - исходный лист
             if (string.IsNullOrWhiteSpace(search))
                 return _allSerials;
 
@@ -107,7 +126,7 @@ namespace AnimePortal
             List<Serial> result = new List<Serial>();
             foreach (Serial s in _allSerials)
             {
-                if (s.AllGenres.ToLower().Contains(search) || s.Name.ToLower().Contains(search))
+                if (s.GenresName.ToLower().Contains(search) || s.Name.ToLower().Contains(search))
                 {
                     result.Add(s);
                 }
@@ -115,24 +134,27 @@ namespace AnimePortal
             return result;
         }
 
+        // Сериализация
         private void Serialize()
         {
-            using (FileStream fs = new FileStream(_file, FileMode.OpenOrCreate))
+            // Чтобы не было ошибок, каждый раз будем создавать по новой
+            using (FileStream fs = new FileStream(_file, FileMode.Create))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Serial>));
                 serializer.Serialize(fs, _allSerials);
             }
         }
 
+        // Десериализация
         private void Deserialize()
         {
             if (File.Exists(_file))
             {
-                using (FileStream fs = new FileStream(_file, FileMode.Open))
-                {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Serial>));
-                    _allSerials = (List<Serial>)serializer.Deserialize(fs);
-                }
+                    using (FileStream fs = new FileStream(_file, FileMode.Open))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(List<Serial>));
+                        _allSerials = (List<Serial>)serializer.Deserialize(fs);
+                    }
             }
         }
     }

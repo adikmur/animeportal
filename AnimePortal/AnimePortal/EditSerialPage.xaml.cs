@@ -16,19 +16,27 @@ using System.Windows.Shapes;
 namespace AnimePortal
 {
     /// <summary>
-    /// Логика взаимодействия для AddSerialPage.xaml
+    /// Логика взаимодействия для EditSerialPage.xaml
     /// </summary>
-    public partial class AddSerialPage : Page
+    public partial class EditSerialPage : Page
     {
         SerialMethods _serials;
+        Serial _serialToEdit;
 
-        public AddSerialPage(SerialMethods serials)
+        public EditSerialPage(SerialMethods serials, Serial serial)
         {
             InitializeComponent();
             _serials = serials;
+            _serialToEdit = serial;
+
+            titleLabel.Text += $" \"{_serialToEdit.Name}\"";
+            txtName.Text = _serialToEdit.Name;
+            txtDescription.Text = _serialToEdit.Description;
+            txtGenres.Text = _serialToEdit.Genres;
+            txtRating.Text = _serialToEdit.Rating.ToString();
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             double rating;
             if (!double.TryParse(txtRating.Text, out rating) || rating > 10 || rating < 0)
@@ -44,17 +52,8 @@ namespace AnimePortal
                 return;
             }
 
-            Serial serial = new Serial(txtName.Text, txtDescription.Text, txtGenres.Text, rating);
-
-            try
-            {
-                _serials.AddSerial(serial);
-                NavigationService.GoBack();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            _serials.EditSerial(_serialToEdit, txtName.Text, txtDescription.Text, txtGenres.Text, rating);
+            NavigationService.GoBack();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
